@@ -10,10 +10,7 @@ int majorityElement(vector<int>& nums) {
         int i=0;
         while(x-1>0){
             int j=dizi.size();
-            do
-            {
-                dizi.push_back(nums[i]);
-            }
+            
             while(j>0){
                 
                 if(nums[i]!=dizi[j]){

@@ -16,35 +16,25 @@ using namespace std;
 
 
  ListNode* deleteDuplicates(ListNode* head) {
-        struct ListNode* mynode= new ListNode();
-        mynode=head;
+        
         struct ListNode* temp=head;
         if(head==NULL){ return temp;}
         else{
             if(head->next==NULL){
-                return mynode;
+                return temp;
             }
             else{
-                while(temp){
-                    if(temp->next==NULL){
-                        if(temp->val==head->val){
-                            delete temp;
-                            head->next=NULL;
-                        }
-                        return mynode;
-                    }
-                    if(temp->val==temp->next->val){
-                        if(temp->next->next){
-                        struct ListNode* temp3=temp->next->next;
-                        delete temp->next;
-                        temp->next=temp3;}
-                        else{
-                            delete temp->next;
-                        }
-                    }
+                while(temp && temp->next){
+                   if(temp->val==temp->next->val){
+                    struct ListNode* temp3= temp->next;
+                    temp->next=temp->next->next;
+                    delete temp3;
+                   }
+                   else{
                     temp=temp->next;
+                   }
                 }
-                return mynode; 
+                return head; 
             }
             
         }

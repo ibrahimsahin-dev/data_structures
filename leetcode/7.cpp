@@ -4,54 +4,86 @@
 #include <cmath>
 using namespace std;
 #define INT_max  2147483647
-#define INT_min -2147483649
+#define INT_min -2147483648
 
-int reverse(int x) {
-    bool ispositif=1;
-   
-    string s;
-    int sayi=x;
-    if(sayi<0){sayi*=-1; ispositif=0;}
-    bool ok=1;
-    while(sayi>0 && ok){
-        if(sayi%10==0){
-            sayi=sayi/10;
-        }
-        else{
-            ok=0;
-        }
-    }
-    while(sayi>0){
-        
-        s += to_string(sayi % 10);
-        sayi=sayi/10;
-    }
-    int top=0;
-    
-    int size=s.length();
-    int i=0;
-    while(i<s.length()){
-        
-        if(i==s.length()-1){top += (s[i] - '0'); break;}
-        top += (s[i] - '0') * pow(10, size - 1);               /// buraya -48 yazdik poatladi
-        i++;
-        size--;
+int reverse_bruteforce(int x) {
+    int max = 2147483647;
+    int min = -2147483648;
 
-        
-        if(top>INT_max){
-        return 0;
+    int i = 0;
+    int y = x;
+    string str;
+    bool isnegative = 0;
+    bool sikinti = 0;
+
+    if (x < 0) {
+        isnegative = 1;
+        if (x == -2147483648) {
+            sikinti = 1;
+            x = -2147483647; 
+        }
+        x *= -1;
+        y = x;
     }
-    if(!ispositif){
-        if(-top<INT_min){
+
+    while (y % 10 == 0 && y != 0) {
+        y = y / 10;
+    }
+
+    while (y > 0) {
+        str += to_string(y % 10);
+        y = y / 10;
+    }
+
+    if (sikinti) {
+        
+        if (str[0] == '9') {
+  
+            int j = 0;
+            while (str[j] == '9') {
+                str[j] = '0';
+                j++;
+            }
+            if (j < str.length()) {
+                str[j] += 1;
+            } else {
+                str += '1';
+            }
+        } else {
+            str[0] += 1;
+        }
+    }
+
+    if (isnegative == 1) {
+        if (str.length() > to_string(-min).length() ||
+            (str.length() == to_string(-min).length() && str > to_string(-min))) {
+            return 0;
+        }
+    } else {
+        if (str.length() > to_string(max).length() ||
+            (str.length() == to_string(max).length() && str > to_string(max))) {
             return 0;
         }
     }
-    }
-    
-    if(!ispositif){return -top;}
-    return top;
 
+    int size = str.length() - 1;
+    int top = 0;
+    while (i < str.length()) {
+        char kar = str[size];
+        int ax = kar - '0';
+        top += (ax * pow(10, i));
+        size--;
+        i++;
     }
+
+    if (isnegative) {
+        return -top;
+    }
+    return top;
+}
+
     int main(){
-        cout<<reverse(1534236469);
+       
+ cout << reverse_bruteforce(123) << endl;  
+
     }

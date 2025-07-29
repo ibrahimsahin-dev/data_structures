@@ -13,6 +13,20 @@ using namespace std;
 
 
 string convert(string s, int numRows) {
-        string str;
+        
+    int i=0;
+    int j=0;
+    string str[];
+    while(i<s.length())
+    {
+        if(i%numRows==0)
+        {
+        
+        }
+        else if(i%numRows==1)
+        {
+            
+        }
+    }
         
     }

@@ -1,0 +1,11 @@
+# Google Colab'daki veri setinin kök dizininin tam yolu
+path: /content/drive/MyDrive/balon_dataset
+
+# Görüntülerin bulunduğu klasör yolları (path'e göre)
+train: images/train
+val: images/valid
+test: images/test
+
+# Sınıf bilgileri
+names:
+  0: balon

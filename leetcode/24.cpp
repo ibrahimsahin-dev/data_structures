@@ -11,21 +11,19 @@ using namespace std;
   };
 
 ListNode* swapPairs(ListNode* head) {
-        if(head==NULL) return head;
-        if(head->next==NULL) return head;
-        struct ListNode* temp=head;
-        struct ListNode*tempx=head;
-        while(temp->next->next!=NULL)
+        if(head==NULL)
+            return NULL;
+        if(head->next==NULL)
+            return NULL;
+        ListNode* temp=head;
+        while(temp->next!=NULL && temp->next->next!=NULL)
         {
-            ListNode* ttemp=temp;
-            tempx=temp->next;
-            ttemp->next=tempx->next;
-            tempx->next=ttemp;
-            
+            struct ListNode* icdongu=new ListNode();
+            icdongu=temp->next->next;
 
-            
         }
-        return head;
+
+
     }
 
 int main() {

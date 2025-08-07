@@ -14,6 +14,8 @@ int divide(int dividend, int divisor) {
         if(divid==0)
             return 0;
         int divis=divisor;
+        if(dividend==-1 and divisor==1)
+            return -1;
         if((dividend>0 && divisor>0) || (dividend<0 &&divisor<0 ))
         {
             if(dividend>0 && divisor>0)
@@ -48,4 +50,7 @@ int divide(int dividend, int divisor) {
         else
             return -i+1;
     }
-   
+int main()
+{
+    cout<<divide(5,-1);
+}

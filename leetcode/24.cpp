@@ -14,21 +14,45 @@ ListNode* swapPairs(ListNode* head) {
         if(head==NULL)
             return NULL;
         if(head->next==NULL)
-            return NULL;
+            return head;
         ListNode* temp=head;
-        while(temp->next!=NULL && temp->next->next!=NULL)
+        if(temp==head)
         {
-            struct ListNode* icdongu=new ListNode();
-            icdongu=temp->next->next;
-
+            ListNode* node1=new ListNode();
+            ListNode* node2=new ListNode();
+            node1->val=temp->val;
+            node1->next=temp->next->next;
+            
+            node2->val=temp->next->val;
+            node2->next=node1;
+            head=node2;
+            
+            temp=node2->next;
         }
+            while(temp && temp->next && temp->next->next)
+            {
+                ListNode* node1=new ListNode();
+                ListNode* node2=new ListNode();
+                
+                node2->val=temp->next->val;
+                node2->next=temp->next->next->next;
+                node1->val=temp->next->next->val;
+                node1->next=node2;
+                
+                
+                temp->next=node1;
+                temp=node2->next;
 
+            }
+        
+        return head;
 
     }
 
 int main() {
     // Örnek bağlı liste: 1 -> 2 -> 3 -> 4
-    ListNode* node4 = new ListNode(4);
+    ListNode* node5 = new ListNode(5);
+    ListNode* node4 = new ListNode(4, node5);
     ListNode* node3 = new ListNode(3, node4);
     ListNode* node2 = new ListNode(2, node3);
     ListNode* node1 = new ListNode(1, node2);

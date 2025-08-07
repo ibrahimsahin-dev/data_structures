@@ -8,41 +8,41 @@ int threeSumClosest(vector<int>& nums, int target) {
         sort(nums.begin(), nums.end());
         int i=0;
         int size=nums.size();
-        int tar=target;
-        int mostapp=nums[0]+nums[1]+nums[2];
-        vector<int> x;
+        vector<int> dizi;
         while(i<size)
         {
             int j=i+1;
             int k=size-1;
             
-            while(j<k){
-                int hedef=nums[j]+nums[k]+nums[i];
-                if(hedef>=target)
+            while(j<=k){
+                int hedef=nums[j]+nums[k]+nums[i]-target;
+                
+                if(hedef==target)
                 {
-                    x.push_back(hedef);
-                    j++;
+                    return hedef;
                 }
-                else{
-                    x.push_back(hedef);
+                else if(hedef>target)
+                {
                     k--;
                 }
-                
+                else if(hedef<target)
+                {
+                    j++;
+                }
+                dizi.push_back(hedef);
             }
             i++;
         }
-       int calc=x[0];
-       for(int i: x)
-       {
-        if(i-target==0)
-        {
-            return i;
-        }
-        else if(i-calc<target)
+    int x=dizi[0]-target;
+    i=0;
+    while(i<dizi.size())
+    {
+        if(dizi[i]-target<x)
         {
             
         }
-       }
+    }
+    
     }
 
     int main() {

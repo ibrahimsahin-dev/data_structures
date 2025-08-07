@@ -3,83 +3,58 @@
 #include <stack>
 #include <cmath>
 using namespace std;
-#define INT_max  2147483647
-#define INT_min -2147483648
+
 
 int reverse_bruteforce(int x) {
-    int max = 2147483647;
-    int min = -2147483648;
-
-    int i = 0;
-    int y = x;
-    string str;
-    bool isnegative = 0;
-    bool sikinti = 0;
-
-    if (x < 0) {
-        isnegative = 1;
-        if (x == -2147483648) {
-            sikinti = 1;
-            x = -2147483647; 
-        }
-        x *= -1;
-        y = x;
+   
+    while(x%10==0)
+    {
+        x/=10;
     }
-
-    while (y % 10 == 0 && y != 0) {
-        y = y / 10;
+    bool is_negative=0;
+    if(x<0)
+    {
+        is_negative=1;
+        x*=-1;
     }
-
-    while (y > 0) {
-        str += to_string(y % 10);
-        y = y / 10;
-    }
-
-    if (sikinti) {
-        
-        if (str[0] == '9') {
-  
-            int j = 0;
-            while (str[j] == '9') {
-                str[j] = '0';
-                j++;
-            }
-            if (j < str.length()) {
-                str[j] += 1;
-            } else {
-                str += '1';
-            }
-        } else {
-            str[0] += 1;
-        }
-    }
-
-    if (isnegative == 1) {
-        if (str.length() > to_string(-min).length() ||
-            (str.length() == to_string(-min).length() && str > to_string(-min))) {
-            return 0;
-        }
-    } else {
-        if (str.length() > to_string(max).length() ||
-            (str.length() == to_string(max).length() && str > to_string(max))) {
-            return 0;
-        }
-    }
-
-    int size = str.length() - 1;
-    int top = 0;
-    while (i < str.length()) {
-        char kar = str[size];
-        int ax = kar - '0';
-        top += (ax * pow(10, i));
-        size--;
+    string str=to_string(x);
+    int i=0;
+    int lastIndex=str.length()-1;
+    while(i<str.length()/2)
+    {
+        char temp;
+        temp=str[i];
+        str[i]=str[lastIndex];
+        str[lastIndex]=temp;
         i++;
+        lastIndex--;
     }
+    int net=0;
+    i=0;
+    while(i<str.length())
+    {
+        net*=10;
+        net+=str[i]-48;
+        i++;
+        if(is_negative)
+        {
+            net*=-1;
+            if(net<=INT_MIN)
+                return 0;
+            net*=-1;
+        }
+        else{
+        if(net>=INT_MAX)
+            return 0;
+        }
 
-    if (isnegative) {
-        return -top;
     }
-    return top;
+    if(is_negative)
+    {
+        return -net;
+    }
+    else
+        return net;
 }
 
     int main(){

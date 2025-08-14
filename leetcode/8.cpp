@@ -2,46 +2,44 @@
 #include <vector>
 #include <stack>
 using namespace std;
-int myAtoi(string s) {
-        int i=0;
-        bool isthereNegative=0;
-        int top=0;
-        
-        while(s[i]<48 || s[i]>57)
+ int myAtoi(string s) {
+        string str="";
+        bool is_negative=0;
+       for(int i=0; i<s.length();i++)
+       {
+        if((s[i]>=65 &&s[i]<=90) || (s[i]>=97 && s[i]<=122))
+            break;
+        else if(s[i]>=45)
+            is_negative=1;
+        else if(s[i]>=48 &&s[i]<=57)
         {
-            if(s[i]=='-')
-                isthereNegative=1;
-            if((s[i]>=65 && s[i]<=90) || (s[i]>=97 && s[i]<=122))
+            str+=s[i];
+        }
+        cout<<str;    
+       }   
+       int z=0;
+        while(z<str.length())
         {
-            return 0;
-        }
-            i++;
-            if(i==s.length())
-                return 0;
-        }
-        if(s[i]==0 && (s[i]>=48 && s[i]<=57)){
-            i++;
-        }
-        while(s[i]!='\0' && (s[i]>=48 && s[i]<=57))
-        {
-            top=top*10;
-            top+=s[i]-48;
-            if(i==s.length()){
-                if(isthereNegative)
-                {
-                    return -top;
-                }
-                else
-                    return top;
+            if(str[z]==0){
+                z++;
             }
-            i++;
+            else
+                break;
         }
+        int net=0;
         
-        if(isthereNegative)
+        while(z<str.length())
         {
-            top*=-1;
+            net*=10;
+            net += str[z] - '0';
+            z++;
         }
-         return top;       
+        if(is_negative)
+            return -net;
+        else
+            return net;
+    
+    
     }
 int main()
 {

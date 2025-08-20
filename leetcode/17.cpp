@@ -3,8 +3,9 @@
 #include <stack>
 #include <utility>
 using namespace std;
-
-int main()
-{
-  int dizi[3]{1,2,3};
-}
+vector<string> letterCombinations(string digits) {
+        int i,j,k;
+        i=j=k=0;
+        
+        
+    }

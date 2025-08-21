@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+
 int maxOperations(vector<int>& nums, int k) {
     sort(nums.begin(), nums.end());
     int i = 0;

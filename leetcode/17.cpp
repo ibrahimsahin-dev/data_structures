@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#include <utility>
 using namespace std;
+<<<<<<< HEAD
 vector<vector<int>> x;
 vector<int> elde;
     void rec(vector<int> nums, bool used[])
@@ -37,3 +39,11 @@ int main()
         cout<<i<<endl;
     }
 }
+=======
+vector<string> letterCombinations(string digits) {
+        int i,j,k;
+        i=j=k=0;
+        
+        
+    }
+>>>>>>> c1444cf6621521d75caf5964d4eca2a82e8d3434

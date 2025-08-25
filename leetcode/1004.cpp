@@ -11,15 +11,23 @@ using namespace std;
 // Output: 10
 // Explanation: [0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]
 int longestOnes(vector<int>& nums, int k) {
-       int sol=0;
+       int left=0;
        int zero_count=0;
+       int net=0;
        for(int i=0;i<nums.size();i++)
        {
         if(nums[i]==0)
             zero_count++;
-    
+        while(zero_count>k)
+        {
+            if(nums[left]==0)
+                zero_count--;
+            left++;
+        }
+        if(i-left+1>net)
+            net=i-left+1;
        }
-       
+       return net;
     }
 int main()
 {

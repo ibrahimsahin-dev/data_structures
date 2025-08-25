@@ -30,27 +30,3 @@ bool closeStrings_bruteforce(string word1, string word2) {
     return vec1==vec2;
 }
 
-int main() {
-    // Test durumlarını burada deneyebilirsin.
-    string word1_test1 = "cabbba";
-    string word2_test1 = "abbccc";
-    cout << "Test 1: " << word1_test1 << " ve " << word2_test1 << " -> " 
-         << (closeStrings(word1_test1, word2_test1) ? "True" : "False") << endl;
-
-    string word1_test2 = "abc";
-    string word2_test2 = "bca";
-    cout << "Test 2: " << word1_test2 << " ve " << word2_test2 << " -> " 
-         << (closeStrings(word1_test2, word2_test2) ? "True" : "False") << endl;
-
-    string word1_test3 = "a";
-    string word2_test3 = "aa";
-    cout << "Test 3: " << word1_test3 << " ve " << word2_test3 << " -> " 
-         << (closeStrings(word1_test3, word2_test3) ? "True" : "False") << endl;
-         
-    string word1_test4 = "cbb";
-    string word2_test4 = "acc";
-    cout << "Test 4: " << word1_test4 << " ve " << word2_test4 << " -> " 
-         << (closeStrings(word1_test4, word2_test4) ? "True" : "False") << endl;
-
-    return 0;
-}

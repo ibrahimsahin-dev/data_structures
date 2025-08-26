@@ -6,7 +6,7 @@ vector<int> findDiagonalOrder(vector<vector<int>>& mat) {
         {
             for(int col=0;col<mat[0].size();col++)
             {
-                ;
+                
             }
         }
     }

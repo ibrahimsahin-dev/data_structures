@@ -72,18 +72,32 @@ vector<int> asteroidCollision_bruteforce(vector<int>& asteroids) {
 
 vector<int> asteroidCollision(vector<int>& asteroids)
 {
-    vector<int> res;
+    
     stack<int> stk;
-    for(int i: asteroids)
+   
+    for(auto& i: asteroids)
     {
-        
-    }
-
-    while(!stk.empty())
+        bool valid=1;
+       
+        while(!stk.empty() && stk.top()>0 && i<0)
         {
-            res.push_back(stk.top());
+             if(stk.top()<abs(i)){
+                    stk.pop();
+                    continue;
+                }else if(stk.top()==abs(i)){
+                    stk.pop();  
+                }
+                valid=false;
+                break;
+        }
+        if(valid){
+                stk.push(i);
+            }
+    }
+vector<int> res(stk.size());
+    for(int i=stk.size()-1;i>=0;i--){
+            res[i]=stk.top();
             stk.pop();
         }
-        reverse(res.begin(),res.end());
         return res;
 }

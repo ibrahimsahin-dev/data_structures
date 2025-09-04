@@ -12,7 +12,7 @@ using namespace std;
 
 class Solution {
 public:
-    ListNode* deleteMiddle(ListNode* head) {
+    ListNode* deleteMiddle_bruteforce(ListNode* head) {
         if(head->next==NULL)
         {
             return NULL;
@@ -36,3 +36,21 @@ public:
         delete temp2;
     }
 };
+
+ListNode* deleteMiddle(ListNode* head) {
+        if(head->next==NULL || head==NULL)
+        {
+            return NULL;
+        }
+        ListNode* fast=head;
+        ListNode* slow=head;
+        ListNode* prev=NULL;
+        while(fast!=NULL)
+        {
+            prev=slow;
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+        prev->next=slow->next;
+        return head;
+    }

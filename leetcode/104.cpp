@@ -29,3 +29,29 @@ using namespace std;
                 return right+1;
         }
     }
+
+    vector<int>vec;
+    void bst(TreeNode* node)
+    {
+        if(node==NULL)
+            return;
+        if(node->left)
+            bst(node->left);
+        vec.push_back(node->val);
+        if(node->right);
+            bst(node->right);
+    }
+
+TreeNode* searchBST(TreeNode* root, int val) {
+    while(!root)
+    {
+        if(val==root->val)
+            return root;
+        else if(val>root->val)
+            searchBST(root->right,val);
+        else
+            searchBST(root->left,val);
+
+    }
+    return NULL;
+}

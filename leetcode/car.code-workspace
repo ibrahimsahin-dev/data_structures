@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "../../Tubitak/car"
+		},
+		{
+			"path": "../../siha"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"ratio": "cpp",
+			"queue": "cpp",
+			"stack": "cpp",
+			"filesystem": "cpp",
+			"iostream": "cpp",
+			"ostream": "cpp",
+			"array": "cpp",
+			"chrono": "cpp",
+			"deque": "cpp",
+			"forward_list": "cpp",
+			"list": "cpp",
+			"span": "cpp",
+			"vector": "cpp",
+			"xstring": "cpp",
+			"xutility": "cpp",
+			"string_view": "cpp",
+			"xiosbase": "cpp"
+		}
+	}
+}

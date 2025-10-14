@@ -10,21 +10,25 @@ using namespace std;
   };
 
   bool res=0;
-    void dfs(TreeNode* node,int val,int targetsum)
+    bool dfs(TreeNode* node,int val,int targetsum)
     {
         if(!node->left && !node->right)
         {
             cout<<"val degeri: "<<val<< "target"<< targetsum<<endl;
             if(val==targetsum)
-                res=1;
-            return;
+                return 1;
+            return 0;
         }
         if(node->left){
-        dfs(node->left,(node->left->val+val),targetsum);
+        bool left=dfs(node->left,(node->left->val+val),targetsum);
         }
+        if(left)
+            return 1;
         if(node->right){
-        dfs(node->right,(node->right->val+val),targetsum);
+         bool right=dfs(node->right,(node->right->val+val),targetsum);
         }
+        if(right)
+            return 1;
     }
     bool hasPathSum(TreeNode* root, int targetSum) {
         if(root==NULL)

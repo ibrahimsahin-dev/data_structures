@@ -1,21 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-// Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
-// Output: 2
 int findCircleNum(vector<vector<int>>& isConnected) {
-        stack<int> stk;
-        stk.push(0);
         vector<bool> visited(isConnected.size(),false);
-        visited[0]=1;
-        int counter=0;
-        while(!stk.empty())
+        int res=0;
+        int N=isConnected.size();
+        for(int i=0;i<N;i++)
         {
-            int node=stk.top();
-            stk.pop();
-            for(int i: isConnected[node])
+            if(!visited[i])
             {
-                
+                res++;
+             dfs(i,isConnected,visited);
             }
         }
+        return res;
+        
+    }
+    void dfs(int m,vector<vector<int>>& isConnected, vector<bool>&visited  )
+    {
+        visited[m]=1;
+       int N=isConnected.size();
+       for(int i=0;i<N;i++)
+       {
+            if(isConnected[m][i]==1 && !visited[i])
+            {
+                dfs(i,isConnected,visited);
+            }
+       } 
     }

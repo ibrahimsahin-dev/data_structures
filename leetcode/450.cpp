@@ -63,3 +63,8 @@ TreeNode* deleteNode_bruteforce(TreeNode* root, int key) {
         return mainroot;
     }
     
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if(root==NULL)
+            return NULL;
+            
+    }
